@@ -2,26 +2,25 @@ from tkinter import *
 from tkinter import messagebox
 import tkinter as tk
 from datetime import datetime
+#set window in center------------------------->
 krish=Tk()
-
 w=1000
 h=500
 sw=krish.winfo_screenwidth()
 sh=krish.winfo_screenheight()
-
 x=(sw/2)-(w/2)
 y=(sh/2)-(h/2)
 krish.geometry("%dx%d+%d+%d"   % (w,h,x,y))
 krish.title("Grocer Billing System")
+#--------------------------------------------------<
 
-
-
-
+#frames-------------------------------------------->
 customer=Frame(krish)
 customer.grid(row=0,column=0)
 rate=Frame(krish)
 rate.grid(row=1,column=0,sticky="nw",padx=10)
-
+#----------------------------------------------------<
+#customer details------------------------------------>
 lafrm=tk.LabelFrame(customer,text="Customer detail")
 lafrm.grid(row=1,column=0,padx=10)
 
@@ -29,15 +28,20 @@ laname=Label(lafrm,text="name",font=("times",10,"bold"))
 laname.grid(row=1,column=0)
 ename=Entry(lafrm,font=("times",10,"bold"))
 ename.grid(row=1,column=1)
+
 laphon=Label(lafrm,text="Phone",font=("times",10,"bold"))
 laphon.grid(row=1,column=2)
 ephone=Entry(lafrm,font=("times",10,"bold"))
 ephone.grid(row=1,column=3)
+
 labill=Label(lafrm,text="Bill No",font=("times",10,"bold"))
 labill.grid(row=1,column=4)
 ebill=Entry(lafrm,font=("times",10,"bold"))
 ebill.grid(row=1,column=5,pady=30)
 
+#-----------------------------------------------------------<
+
+#items------------------------------------------------------->
 itementery=tk.LabelFrame(rate,text="Items(Entery Quality)")
 itementery.grid(row=2,column=0,pady=20)
 erice=Entry(itementery,font=("times",10,"bold"))
@@ -45,7 +49,6 @@ erice.grid(row=0,column=1)
 
 larice=Label(itementery,text="Rice(₹50/kg)",font=("times",10,"bold"))
 larice.grid(row=0,column=0)
-
 erice=Entry(itementery,font=("times",10,"bold"))
 erice.grid(row=0,column=1)
 
@@ -60,12 +63,12 @@ lasugar=Label(itementery,text="Sugar(₹40/kg)",font=("times",10,"bold"))
 lasugar.grid(row=2,column=0,pady=10)
 esugar=Entry(itementery,font=("times",10,"bold"))
 esugar.grid(row=2,column=1,pady=10,padx=30)
+
 latea=Label(itementery,text="Tea(₹80/kg)",font=("times",10,"bold"))
 latea.grid(row=3,column=0,pady=10,padx=30)
 etea=Entry(itementery,font=("times",10,"bold"))
 etea.grid(row=3,column=1,pady=10,padx=30)
-lst=Frame(krish)
-lst.grid(row=1,column=2)
+
 
 rice=50
 oil=100
@@ -82,10 +85,14 @@ def total():
         
  
  
-
+#list box frame---------------------------------------------------->
+lst=Frame(krish)
+lst.grid(row=1,column=2)
 lstbox=Listbox(lst,width=60,height=20)
 lstbox.grid(row=0,column=0)
+#---------------------------------------------------------------------<
 
+#===========================Buttons======================================>
 btngenratebill=Button(krish,text="Generate Bill",font=("times",10,"bold"),command=add)
 btngenratebill.grid(row=2,column=0,sticky="nw",padx=30)
 
@@ -108,3 +115,4 @@ space=(lswidth-msgbox)//2
 center_msg="   "*space+msg
 lstbox.insert(END,center_msg,f"today({today})",f"Time{time}")
 krish.mainloop()
+#=======================================End=======================================<
